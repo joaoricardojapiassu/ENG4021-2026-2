@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mapucapp.views import *
+from mapucapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',home),
+    path('', views.movie_list, name='movie_list'),
+    path('movies/new/', views.movie_create, name='movie_create'),
+    path('movies/<int:pk>/update/', views.movie_update, name='movie_update'),
+    path('movies/<int:pk>/delete/', views.movie_delete, name='movie_delete'),
 ]

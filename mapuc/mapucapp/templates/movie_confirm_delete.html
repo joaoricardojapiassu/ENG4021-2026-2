@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir filme</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="header">
+        <span>Lumière</span>
+    </div>
+
+    <div class="page-container">
+        <div class="form-card confirm-card">
+            <h1>Excluir filme</h1>
+            <p>Tem certeza que deseja excluir o filme <strong>{{ movie.title }}</strong>?</p>
+
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Excluir</button>
+                <a href="{% url 'movie_list' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
