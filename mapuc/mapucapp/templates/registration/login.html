@@ -1,0 +1,21 @@
+{% if error_message %}
+  <p style="color: red;"><b>{{ error_message }}</b></p>
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <td><label for="username">Nome de Usuário:</label></td>
+      <td><input type="text" name="username" id="username" required></td>
+    </tr>
+    <tr>
+      <td><label for="password">Senha:</label></td>
+      <td><input type="password" name="password" id="password" required></td>
+    </tr>
+  </table>
+  <input type="submit" value="login">
+  <input type="hidden" name="next" value="{{ next }}">
+</form>
+
+<p>Não tem uma conta? <a href="{% url 'register' %}">Cadastre-se</a></p>

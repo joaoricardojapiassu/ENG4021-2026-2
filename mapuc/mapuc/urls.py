@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from mapucapp import views
 
 urlpatterns = [
@@ -24,4 +24,7 @@ urlpatterns = [
     path('movies/new/', views.movie_create, name='movie_create'),
     path('movies/<int:pk>/update/', views.movie_update, name='movie_update'),
     path('movies/<int:pk>/delete/', views.movie_delete, name='movie_delete'),
+    path('login/', views.login_user, name='login'),
+    path('logout/', views.logout_user, name='logout'),
+    path('registrar/', views.create_user, name='registrar'),
 ]
