@@ -3,6 +3,15 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
+class LoginPageTests(TestCase):
+    def test_get_login_renders_page_and_registration_link(self):
+        response = self.client.get(reverse("login"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "registration/login.html")
+        self.assertContains(response, reverse("registrar"))
+
+
 class CreateUserRedirectTests(TestCase):
     def test_redirects_to_home_after_registration(self):
         response = self.client.post(
